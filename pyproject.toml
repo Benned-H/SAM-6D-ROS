@@ -1,0 +1,30 @@
+[tool.ruff]
+line-length = 100
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["ALL"] # Default to all Ruff rules, add ignores as needed
+ignore = [
+    "D203", # Don't place a blank line before a class docstring
+    "D213", # Don't begin a docstring on its second line
+]
+unfixable = ["F401"] # Disable 'fix' for unused imports
+
+[tool.ruff.lint.flake8-annotations]
+mypy-init-return = true # Allow omission of return type on __init__
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = ["S101"]   # Allow assertions in test files
+"**/scripts/*" = ["T201"] # Allow print statements in scripts
+
+[tool.ruff.format] # Use the same settings as Black
+quote-style = "double"
+indent-style = "space"
+
+
+[tool.mypy]
+disallow_incomplete_defs = true # Disallow functions with incomplete type annotations
+check_untyped_defs = true # Type-check the interior of unannotated functions
+warn_return_any = true # Warn when returning type Any from a function that says otherwise
+show_error_code_links = true # Show links to error code docs
+warn_unused_configs = true # Warn if any per-module sections in the config file go unused
