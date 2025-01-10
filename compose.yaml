@@ -1,14 +1,14 @@
 services:
-  sam6d: # Container providing dependencies of the SAM-6D repository
+  sam-6d-ros: # Container supporting SAM-6D and ROS 1 Noetic (w/ NVIDIA GPU)
     extends: # Extend a service providing config for NVIDIA GPU(s) and in-Docker GUIs
       file: ./docker/ros_docker/compose/core-compose.yaml
       service: base-nvidia-ubuntu
 
-    build: # Command:     docker compose --progress plain build sam6d
+    build: # Command:     docker compose --progress plain build sam-6d-ros
       context: .
-      target: sam6d
+      target: sam-6d-ros
 
-    image: bennedh/sam6d
+    image: bennedh/sam-6d-ros
 
     volumes: # Mount the working directory into the container
       - .:/docker/sam6d
