@@ -1,0 +1,14 @@
+services:
+  sam6d: # Container providing dependencies of the SAM-6D repository
+    extends: # Extend a service providing config for NVIDIA GPU(s) and in-Docker GUIs
+      file: ./docker/ros_docker/compose/core-compose.yaml
+      service: base-nvidia-ubuntu
+
+    build: # Command:     docker compose --progress plain build sam6d
+      context: .
+      target: sam6d
+
+    image: bennedh/sam6d
+
+    volumes: # Mount the working directory into the container
+      - .:/docker/sam6d
